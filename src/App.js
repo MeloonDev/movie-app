@@ -8,6 +8,7 @@ import AddFavourites from "./components/AddFavourites";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   const getMovieRequest = async (searchValue) => {
@@ -25,6 +26,13 @@ function App() {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
+  const addFavouriteMovie = (movie) => {
+    if (!favourites.includes(movie)) {
+      const newFavouriteList = [...favourites, movie];
+      setFavourites(newFavouriteList);
+    }
+  };
+
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center m-0 mt-4 mb-4">
@@ -32,7 +40,21 @@ function App() {
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <MovieList movies={movies} favouriteComponent={AddFavourites} />
+        <MovieList
+          movies={movies}
+          handleFavourites={addFavouriteMovie}
+          favouriteComponent={AddFavourites}
+        />
+      </div>
+      <div className="row d-flex align-items-center m-0 mt-4 mb-4">
+        <MovieListHeading heading="Favourites" />
+      </div>
+      <div className="row">
+        <MovieList
+          movies={favourites}
+          handleFavourites={addFavouriteMovie}
+          favouriteComponent={AddFavourites}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-const MovieList = ({ movies, favouriteComponent }) => {
+const MovieList = ({ movies, favouriteComponent, handleFavourites }) => {
   const FavouriteComponent = favouriteComponent;
 
   return (
@@ -9,7 +9,10 @@ const MovieList = ({ movies, favouriteComponent }) => {
           key={index}
         >
           <img src={movie.Poster} alt={movie.Title} />
-          <div className="overlay d-flex align-items-center justify-content-center">
+          <div
+            onClick={() => handleFavourites(movie)}
+            className="overlay d-flex align-items-center justify-content-center"
+          >
             <FavouriteComponent />
           </div>
         </div>
