@@ -4,6 +4,28 @@ body {
   color: #fff;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8e929c;
+  border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5b5e;
+}
+
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
